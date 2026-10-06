@@ -1,339 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account</title>
 
-  <title>Create Account</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 420px;
-      padding: 40px;
-      background: white;
-      border-radius: 24px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.1);
-    }
-
-    .logo {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 25px;
-      border-radius: 14px;
-      color: white;
-      background: linear-gradient(135deg,#00A4FF,#2D7DFF);
-      font-weight: bold;
-      font-size: 20px;
-    }
-
-    .eyebrow {
-      color: #2D7DFF;
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
-    }
-
-    h1 {
-      font-size: 30px;
-      color: #111827;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      color: #667085;
-      font-size: 14px;
-      margin-bottom: 28px;
-    }
-
-    label {
-      display: block;
-      margin: 18px 0 8px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #344054;
-    }
-
-    input {
-      width: 100%;
-      height: 50px;
-      padding: 0 14px;
-      border: 1px solid #d9e0ea;
-      border-radius: 12px;
-      outline: none;
-      font-size: 14px;
-    }
-
-    input:focus {
-      border-color: #2D7DFF;
-      box-shadow: 0 0 0 4px rgba(45,125,255,.1);
-    }
-
-    .password {
-      position: relative;
-    }
-
-    .password input {
-      padding-right: 65px;
-    }
-
-    .show {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      border: 0;
-      background: none;
-      color: #2D7DFF;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .signup-btn {
-      width: 100%;
-      height: 50px;
-      margin-top: 24px;
-      border: 0;
-      border-radius: 12px;
-      color: white;
-      background: linear-gradient(135deg,#00A4FF,#2D7DFF);
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .signup-btn:disabled {
-      opacity: .65;
-      cursor: not-allowed;
-    }
-
-    #message {
-      margin-top: 12px;
-      text-align: center;
-      font-size: 12px;
-      min-height: 16px;
-    }
-
-    .login-link {
-      margin-top: 25px;
-      text-align: center;
-      color: #667085;
-      font-size: 12px;
-    }
-
-    a {
-      color: #2D7DFF;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    @media (max-width: 480px) {
-      .card {
-        padding: 28px 22px;
-      }
-
-      h1 {
-        font-size: 26px;
-      }
-    }
-  </style>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  font-family:Arial,sans-serif;
+  background:#f5f7fb
+}
+.card{
+  width:100%;
+  max-width:420px;
+  padding:35px;
+  background:white;
+  border-radius:22px;
+  box-shadow:0 20px 60px rgba(0,0,0,.1)
+}
+.logo{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  margin-bottom:22px;
+  border-radius:14px;
+  color:white;
+  background:linear-gradient(135deg,#00A4FF,#2D7DFF);
+  font-weight:bold;
+  font-size:20px
+}
+.eyebrow{
+  color:#2D7DFF;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:2px
+}
+h1{
+  margin:8px 0;
+  color:#111827;
+  font-size:28px
+}
+.subtitle{
+  color:#667085;
+  font-size:14px;
+  margin-bottom:25px
+}
+label{
+  display:block;
+  margin:16px 0 7px;
+  color:#344054;
+  font-size:13px;
+  font-weight:600
+}
+input{
+  width:100%;
+  height:50px;
+  padding:0 14px;
+  border:1px solid #d9e0ea;
+  border-radius:12px;
+  outline:none;
+  font-size:14px
+}
+input:focus{
+  border-color:#2D7DFF;
+  box-shadow:0 0 0 4px rgba(45,125,255,.1)
+}
+button{
+  width:100%;
+  height:50px;
+  margin-top:22px;
+  border:0;
+  border-radius:12px;
+  color:white;
+  background:linear-gradient(135deg,#00A4FF,#2D7DFF);
+  font-size:15px;
+  font-weight:bold
+}
+button:disabled{opacity:.6}
+#message{
+  min-height:20px;
+  margin-top:12px;
+  text-align:center;
+  font-size:12px
+}
+.login{
+  margin-top:22px;
+  text-align:center;
+  color:#667085;
+  font-size:12px
+}
+a{
+  color:#2D7DFF;
+  text-decoration:none;
+  font-weight:bold
+}
+</style>
 </head>
 
 <body>
 
-  <main class="card">
+<main class="card">
 
-    <div class="logo">E</div>
+<div class="logo">E</div>
 
-    <p class="eyebrow">GET STARTED</p>
+<div class="eyebrow">GET STARTED</div>
 
-    <h1>Create your account</h1>
+<h1>Create your account</h1>
 
-    <p class="subtitle">
-      Create an account to get started.
-    </p>
+<p class="subtitle">
+Create an account to get started.
+</p>
 
-    <form id="signupForm">
+<form id="signupForm">
 
-      <label for="email">Email address</label>
+<label>Email address</label>
 
-      <input
-        type="email"
-        id="email"
-        placeholder="you@example.com"
-        autocomplete="email"
-        required
-      >
+<input
+id="email"
+type="email"
+placeholder="you@example.com"
+required
+>
 
-      <label for="password">Password</label>
+<label>Password</label>
 
-      <div class="password">
+<input
+id="password"
+type="password"
+placeholder="Create a password"
+required
+>
 
-        <input
-          type="password"
-          id="password"
-          placeholder="Create a password"
-          autocomplete="new-password"
-          required
-        >
+<label>Confirm password</label>
 
-        <button
-          type="button"
-          class="show"
-          id="showPassword"
-        >
-          Show
-        </button>
+<input
+id="confirmPassword"
+type="password"
+placeholder="Confirm your password"
+required
+>
 
-      </div>
+<button id="signupButton" type="submit">
+Create account
+</button>
 
-      <label for="confirmPassword">Confirm password</label>
+<p id="message"></p>
 
-      <div class="password">
+</form>
 
-        <input
-          type="password"
-          id="confirmPassword"
-          placeholder="Confirm your password"
-          autocomplete="new-password"
-          required
-        >
+<div class="login">
+Already have an account?
+<a href="index.html">Sign in</a>
+</div>
 
-        <button
-          type="button"
-          class="show"
-          id="showConfirmPassword"
-        >
-          Show
-        </button>
+</main>
 
-      </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-      <button
-        class="signup-btn"
-        id="signupButton"
-        type="submit"
-      >
-        Create account
-      </button>
+<script>
 
-      <p id="message"></p>
+const supabaseClient =
+window.supabase.createClient(
+"https://ivgvutsvtmwzoxuhijhi.supabase.co",
+"sb_publishable_n27G40Ccbw2vyU8DsX0yuw_yo-sRodl"
+);
 
-    </form>
+const form =
+document.getElementById("signupForm");
 
-    <p class="login-link">
-      Already have an account?
-      <a href="index.html">Sign in</a>
-    </p>
+const message =
+document.getElementById("message");
 
-  </main>
+const button =
+document.getElementById("signupButton");
 
+form.onsubmit = async function(event){
 
-  <!-- Supabase -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+event.preventDefault();
 
+const email =
+document.getElementById("email").value.trim();
 
-  <script>
+const password =
+document.getElementById("password").value;
 
-    const SUPABASE_URL =
-      "https://ivgvutsvtmwzoxuhijhi.supabase.co";
+const confirmPassword =
+document.getElementById("confirmPassword").value;
 
-    const SUPABASE_PUBLISHABLE_KEY =
-      "sb_publishable_n27G40Ccbw2vyU8DsX0yuw_yo-sRodl";
+if(password !== confirmPassword){
 
-    const supabaseClient =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-      );
+message.style.color="#D92D20";
+message.textContent="Passwords do not match.";
+return;
 
+}
 
-    const form =
-      document.getElementById("signupForm");
+if(password.length < 6){
 
-    const password =
-      document.getElementById("password");
+message.style.color="#D92D20";
+message.textContent="Password must be at least 6 characters.";
+return;
 
-    const confirmPassword =
-      document.getElementById("confirmPassword");
+}
 
-    const message =
-      document.getElementById("message");
+message.style.color="#667085";
+message.textContent="Creating account...";
 
-    const signupButton =
-      document.getElementById("signupButton");
+button.disabled=true;
 
+const {data,error} =
+await supabaseClient.auth.signUp({
+email:email,
+password:password
+});
 
-    document.getElementById("showPassword").onclick =
-      function () {
+button.disabled=false;
 
-        if (password.type === "password") {
-          password.type = "text";
-          this.textContent = "Hide";
-        } else {
-          password.type = "password";
-          this.textContent = "Show";
-        }
+if(error){
 
-      };
+message.style.color="#D92D20";
+message.textContent=error.message;
+return;
 
+}
 
-    document.getElementById("showConfirmPassword").onclick =
-      function () {
+message.style.color="#12B76A";
 
-        if (confirmPassword.type === "password") {
-          confirmPassword.type = "text";
-          this.textContent = "Hide";
-        } else {
-          confirmPassword.type = "password";
-          this.textContent = "Show";
-        }
+message.textContent =
+"Account created! Check your email to verify your account.";
 
-      };
+console.log(data);
 
+};
 
-    form.onsubmit = async function (event) {
+</script>
 
-      event.preventDefault();
-
-      const email =
-        document.getElementById("email")
-        .value
-        .trim();
-
-      const passwordValue =
-        password.value;
-
-      const confirmPasswordValue =
-        confirmPassword.value;
-
-
-      if (passwordValue !== confirmPasswordValue) {
-
-        message.style.color = "#D92D20";
-        message.textContent =
-          "Passwords do not match.";
-
-        return;
-      }
-
-
-      if (passwordValue.length < 6) {
+</body>
+</html>
