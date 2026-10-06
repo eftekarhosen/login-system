@@ -80,20 +80,44 @@
       );
 
 
-    async function checkUser() {
+    async function loadUser() {
 
       const { data } =
         await supabaseClient.auth.getUser();
 
-      if (!data.user) {
+      const user = data.user;
+
+
+      if (!user) {
 
         window.location.href = "index.html";
 
         return;
       }
 
+
       document.getElementById("userEmail").textContent =
-        data.user.email;
+        user.email;
+
+
+      const { data: profile } =
+        await supabaseClient
+          .from("profiles")
+          .select("*")
+          .eq("id", user.id)
+          .maybeSingle();
+
+
+      if (!profile) {
+
+        await supabaseClient
+          .from("profiles")
+          .insert({
+            id: user.id,
+            email: user.email
+          });
+
+      }
 
     }
 
@@ -108,7 +132,7 @@
       };
 
 
-    checkUser();
+    loadUser();
 
   </script>
 
