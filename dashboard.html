@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dashboard</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 500px;
+      padding: 35px;
+      background: white;
+      border-radius: 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.1);
+      text-align: center;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 20px;
+      border-radius: 18px;
+      color: white;
+      background: linear-gradient(135deg,#00A4FF,#2D7DFF);
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      color: #111827;
+    }
+
+    .subtitle {
+      color: #667085;
+      font-size: 14px;
+    }
+
+    #userEmail {
+      margin: 20px 0;
+      padding: 14px;
+      border-radius: 12px;
+      background: #f5f7fb;
+      color: #344054;
+      font-weight: 600;
+    }
+
+    .logout {
+      width: 100%;
+      height: 50px;
+      border: 0;
+      border-radius: 12px;
+      color: white;
+      background: #D92D20;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .logout:disabled {
+      opacity: .6;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="card">
+
+    <div class="logo">E</div>
+
+    <h1>Welcome 🎉</h1>
+
+    <p class="subtitle">
+      You are successfully logged in.
+    </p>
+
+    <div id="userEmail">
+      Loading user...
+    </div>
+
+    <button class="logout" id="logoutButton">
+      Logout
+    </button>
+
+    <p id="message"></p>
+
+  </main>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+
+    const supabaseClient =
+      window.supabase.createClient(
+        "https://ivgvutsvtmwzoxuhijhi.supabase.co",
+        "sb_publishable_n27G40Ccbw2vyU8DsX0yuw_yo-sRodl"
+      );
+
+
+    const userEmail =
+      document.getElementById("userEmail");
+
+    const logoutButton =
+      document.getElementById("logoutButton");
+
+    const message =
+      document.getElementById("message");
+
+
+    async function loadUser() {
+
+      const {
+        data,
+        error
+      } = await supabaseClient.auth.getUser();
+
+
+      if (error || !data.user) {
+
+        window.location.href = "index.html";
+
+        return;
+      }
+
+
+      userEmail.textContent =
+        data.user.email;
+
+    }
+
+
+    logoutButton.onclick =
+      async function () {
+
+        logoutButton.disabled = true;
+
+        message.textContent = "Logging out...";
+
+
+        const { error } =
+          await supabaseClient.auth.signOut();
+
+
+        if (error) {
+
+          message.textContent =
+            error.message;
+
+          logoutButton.disabled = false;
+
+          return;
+        }
+
+
+        window.location.href =
+          "index.html";
+
+      };
+
+
+    loadUser();
+
+  </script>
+
+</body>
+</html>
